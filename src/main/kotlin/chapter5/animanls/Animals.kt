@@ -1,20 +1,32 @@
 package chapter5.animanls
 
-open class Animal {
-    open val image = ""
-    open val food = ""
-    open val habitat = ""
+
+//interface
+interface Roamable {
+    fun roam()
+}
+//open class Animal {
+abstract class Animal : Roamable {
+//    open val image = ""
+    abstract val image : String
+//    open val food = ""
+    abstract val food : String
+//    open val habitat = ""
+    abstract val habitat : String
     open val hunger = 10
 
-    open fun makeNoise() {
-        println("The Animal is making a noise")
-    }
+//    open fun makeNoise() {
+//        println("The Animal is making a noise")
+//    }
+    abstract fun makeNoise()
 
-    open fun eat() {
-        println("The Animal is eating")
-    }
+//    open fun eat() {
+//        println("The Animal is eating")
+//    }
+     abstract fun eat()
 
-    open fun roam() {
+//    open fun roam() {
+    override fun roam() {
         println("The Animal is roaming")
     }
 
@@ -37,7 +49,7 @@ class Hippo :  Animal() {
     }
 }
 
-open class Canine : Animal() {
+abstract class Canine : Animal() {
     override fun roam() {
         println("The Canine is roaming")
     }
@@ -55,6 +67,13 @@ class Wolf : Canine() {
     override fun eat() {
         println("The Wolf is eating $food")
     }
+}
+
+class Vehicle : Roamable {
+    override fun roam() {
+        println("The Vehicle is roaming")
+    }
+
 }
 
 class Vet {
@@ -75,4 +94,12 @@ fun main() {
     val hippo = Hippo()
     vet.giveShot(wolf)
     vet.giveShot(hippo)
+
+    val roamables = arrayOf(Hippo(), Wolf(), Vehicle())
+    for (item in roamables) {
+        item.roam()
+        if (item is Animal) {
+            item.eat()
+        }
+    }
 }
