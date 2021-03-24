@@ -19,6 +19,12 @@ fun findRecipes(title: String = "",
 
 }
 
+class Cat(var name: String? = null){
+    fun Meow() {
+        println("Meow!")
+    }
+}
+
 fun addNumbers(a: Int, b: Int) : Int{
     return a + b
 }
@@ -50,4 +56,12 @@ fun main() {
 
     println(addNumbers(2, 5))
     println(addNumbers(1.6, 7.3))
+
+    var myCats = arrayOf(Cat("Misty"),
+                                null,
+                                Cat("Socks"))
+    for (cat in myCats){
+        print("${cat!!.name} : ")
+        cat!!.Meow()
+    }
 }
