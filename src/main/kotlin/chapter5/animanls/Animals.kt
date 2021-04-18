@@ -67,6 +67,7 @@ class Wolf : Canine() {
     override fun eat() {
         println("The Wolf is eating $food")
     }
+
 }
 
 class Vehicle : Roamable {
