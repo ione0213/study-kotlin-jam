@@ -61,7 +61,7 @@ fun main() {
                                 null,
                                 Cat("Socks"))
     for (cat in myCats){
-        print("${cat!!.name} : ")
-        cat!!.Meow()
+        print("${cat?.name} : ")
+        cat?.Meow()
     }
 }
